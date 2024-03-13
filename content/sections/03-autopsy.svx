@@ -1,0 +1,8 @@
+# Autopsy
+
+Sick of the terminal? Hate typing in commands over and over again?
+
+Autopsy is the official GUI program released by the developers of The Sleuth Kit, providing you with a user interface to analyse images.  
+On top of the tools provided by The Sleuth Kit, Autopsy also integrates common tools like PhotoRec, aLEAPP, and iLEAPP, that you learn how to use in this course
+
+https://www.sleuthkit.org/autopsy/

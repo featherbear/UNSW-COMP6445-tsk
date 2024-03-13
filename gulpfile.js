@@ -37,6 +37,7 @@ exports.watch = task('watch', () => {
     setupWatcher('content/recordings/**', 'base/public/asciinema/recordings/')
     setupWatcher('content/sections/images/**', 'base/public/images/')
     setupWatcher('content/sections/*.svx', 'base/src/sections/')
+    setupWatcher('content/components/**', 'base/src/components/')
     setupWatcher('content/pages.ts', 'base/src/')
     setupWatcher('content/index.html', 'base/')
 })
@@ -45,6 +46,7 @@ exports.copy = task('copy', series(
     setupCopier('content/recordings/**', 'base/public/asciinema/recordings/', false),
     setupCopier('content/sections/images/**', 'base/public/images/', false),
     setupCopier('content/sections/*.svx', 'base/src/sections/', false),
+    setupCopier('content/components/**', 'base/src/components/', false),
     setupCopier('content/pages.ts', 'base/src/', false),
     setupCopier('content/index.html', 'base/', false)
 ))

@@ -1,1 +1,1 @@
-# COMP6845 Template
+# Introduction to The Sleuth Kit

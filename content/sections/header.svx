@@ -1,4 +1,4 @@
-# COMP6845 | TITLE
+# COMP6[84]45 | The Sleuth Kit
 
 ```
 Version: XX.YY (YYYYMMDD)

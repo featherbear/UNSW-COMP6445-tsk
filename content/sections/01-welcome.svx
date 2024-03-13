@@ -1,3 +1,6 @@
 # Welcome!
 
-This is a page
+The Sleuth Kit is a forensic toolkit for analysing Microsoft and UNIX file systems and disks.  
+It enables investigators to identify and recover evidence from images acquired during incident response or from live systems.
+
+This tutorial will go over the usage

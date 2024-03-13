@@ -1,9 +1,9 @@
 import Welcome from "./sections/01-welcome.svx";
-import Next from "./sections/02-next.svx"
+import Tools from "./sections/02-tools.svx";
 
 const pages = [
   ["Welcome", Welcome],
-  ["Next", Next]
+  ["Tools", Tools]
 ] satisfies [string, any][];
 
 export default pages
