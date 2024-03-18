@@ -1,10 +1,32 @@
-<script>
+<script lang="ts">
     import CommandsByLayer from '../components/CommandsByLayer.svelte'
+    import CommandGroup from "../components/CommandGroup.svelte";
+    import {
+        tsk_commands,
+        Layer,
+        type LayerTypes,
+        type CommandEntry,
+    } from "../components/tsk_commands";
+
+    import { writable } from "svelte/store";
+    let _categories = writable<string[]>([]);
+    
+    const Controller = {
+        setCategories: _categories.update,
+    };
+
+    function handleCategorySelect({detail: category}) {
+        Controller.setCategories(v => v.includes(category) ? v.filter(c => c != category) : [...v, category])
+    }
 </script>
 
 # Tools
 
 > Based off [TSK Tool Overview](http://wiki.sleuthkit.org/index.php?title=TSK_Tool_Overview)
 
-<CommandsByLayer />
+{#if $_categories.length}
+    <CommandGroup underlineCategory={true} on:category={handleCategorySelect} data={tsk_commands.filter(e => $_categories.includes(e.category))} />
+{:else}
+    <CommandsByLayer on:category={handleCategorySelect} />
+{/if}
 
