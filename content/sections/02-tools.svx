@@ -1,6 +1,5 @@
 <script lang="ts">
-    import CommandsByLayer from '../components/CommandsByLayer.svelte'
-    import CommandGroup from "../components/CommandGroup.svelte";
+    import CommandTable from "../components/CommandTable.svelte";
     import {
         tsk_commands,
         Layer,
@@ -18,15 +17,50 @@
     function handleCategorySelect({detail: category}) {
         Controller.setCategories(v => v.includes(category) ? v.filter(c => c != category) : [...v, category])
     }
+
+  import CommandsByGroupingKey from "../components/CommandsByGroupingKey.svelte";
+
+  const visibleLayers: LayerTypes[] = [
+    "automated",
+    "fs",
+    "fn",
+    "meta",
+    "blk",
+    "fsj",
+    "vol",
+    "img",
+    "disk",
+    "misc",
+  ];
+
+
 </script>
 
 # Tools
 
 > Based off [TSK Tool Overview](http://wiki.sleuthkit.org/index.php?title=TSK_Tool_Overview)
 
-{#if $_categories.length}
-    <CommandGroup underlineCategory={true} on:category={handleCategorySelect} data={tsk_commands.filter(e => $_categories.includes(e.category))} />
+
+<CommandsByGroupingKey 
+    tableOptions={{showCategory: false}}
+    groupingKey={(obj) => obj.category} data={tsk_commands}
+>
+  <h3 slot="header" let:key>{key === "undefined" ? "-" : key}</h3>
+  <h3 slot="emptyHeader">Other</h3>
+</CommandsByGroupingKey>
+
+
+<!-- {#if $_categories.length}
+    <CommandTable options={{underlineCategory: true}} on:category={handleCategorySelect} data={tsk_commands.filter(e => $_categories.includes(e.category))} />
 {:else}
-    <CommandsByLayer on:category={handleCategorySelect} />
-{/if}
+
+<CommandsByGroupingKey 
+    tableOptions={{showLayer: false, interactCategory: true}}
+    groupingKey={(obj) => obj.layer} keys={visibleLayers} data={tsk_commands}
+    on:category={handleCategorySelect}
+>
+  <h3 slot="header" let:key>{Layer[key]}</h3>
+</CommandsByGroupingKey>
+
+{/if} -->
 
