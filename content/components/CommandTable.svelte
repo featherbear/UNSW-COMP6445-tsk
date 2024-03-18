@@ -5,24 +5,24 @@
     interactCategory: false,
     underlineCategory: false,
     showTableOutline: true,
+    sortByCommandName: false,
   };
-  export type OptionsType = Partial<typeof DefaultOptions>
+  export type OptionsType = Partial<typeof DefaultOptions>;
 </script>
 
 <script lang="ts">
-  import { Layer, type CommandEntry } from "./tsk_commands";
-  export let data: CommandEntry[];
-
   import { createEventDispatcher } from "svelte";
   const dispatchEvent = createEventDispatcher();
 
+  import { Layer, type CommandEntry } from "./tsk_commands";
+
+  export let data: CommandEntry[];
+  $: if (options.sortByCommandName) {
+    data = data.sort((a, b) => a.command.localeCompare(b.command));
+  }
+
   export let options: OptionsType = DefaultOptions;
-  options = { ...DefaultOptions, ...(options ?? {}) };
-  // export let showLayer: boolean = true;
-  // export let showCategory: boolean = true;
-  // export let interactCategory: boolean = false;
-  // export let underlineCategory: boolean = false;
-  // export let showTableOutline: boolean = false;
+  $: options = { ...DefaultOptions, ...(options ?? {}) };
 </script>
 
 <table class:outlined={options.showTableOutline}>

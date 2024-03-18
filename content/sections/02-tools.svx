@@ -42,7 +42,7 @@
 
 
 <CommandsByGroupingKey 
-    tableOptions={{showCategory: false}}
+    tableOptions={{showCategory: false, sortByCommandName: true}}
     groupingKey={(obj) => obj.category} data={tsk_commands}
 >
   <h3 slot="header" let:key>{key === "undefined" ? "-" : key}</h3>

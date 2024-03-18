@@ -13,6 +13,11 @@
 
   export let data: CommandEntry[];
   export let groupingKey: (object: CommandEntry) => string;
+  
+  /**
+   * You could pop in EmptyKey here, and set showItemsWithEmptyKey=false 
+   * in order to control the positioning of the empty key group
+   */
   export let keys: string[] = [];
 
   export let tableOptions: OptionsType;
@@ -31,7 +36,6 @@
       <any>{}
     );
 
-  console.log(commandsByGroupingKey);
   if (!keys.length) {
     keys = Object.keys(commandsByGroupingKey);
   }
